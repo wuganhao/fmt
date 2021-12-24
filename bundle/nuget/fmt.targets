@@ -19,11 +19,11 @@
     <BuildDependsOn>$(BuildDependsOn);DeployfmtArtifacts</BuildDependsOn>
   </PropertyGroup>
   <ItemGroup>
-    <wxWidgetsArtifacts Include="$(MSBuildThisFileDirectory)..\lib\native\x64\$(Configuration)\*.dll" />
-    <wxWidgetsArtifacts Condition="'$(Configuration)'=='Debug'" Include="$(MSBuildThisFileDirectory)..\lib\native\$(Platform)\$(Configuration)\*.pdb" />
+    <fmtArtifacts Include="$(MSBuildThisFileDirectory)..\lib\native\x64\$(Configuration)\*.dll" />
+    <fmtArtifacts Condition="'$(Configuration)'=='Debug'" Include="$(MSBuildThisFileDirectory)..\lib\native\$(Platform)\$(Configuration)\*.pdb" />
   </ItemGroup>
   <Target Name="DeployfmtArtifacts">
-    <Error Text="Package 'wxWidgets' currently only support 64bit build" Condition="'$(Platform)'!='x64'" />
+    <Error Text="Package 'fmt' currently only support 64bit build" Condition="'$(Platform)'!='x64'" />
     <Copy SourceFiles="@(fmtArtifacts)" DestinationFolder="$(TargetDir)\" />
   </Target>
 </Project>
